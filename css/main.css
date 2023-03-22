@@ -25,8 +25,6 @@ h1, h2, h3, h4, h5, h6 {
 	will-change: transform;
 }
 body {
-	/* background-image: url(../img/bg.jpg);
-	background-size: 50px; */
 	background: rgb(8, 11, 51);
 	color: #fafafa;
 	font-family: raleway-c;
@@ -34,7 +32,6 @@ body {
 }
 .hero-section{
 	background-image: linear-gradient(to bottom, rgb(100, 110, 232) 0%, rgb(8, 11, 51) 100%);
-	background-size: 50px;
 	z-index: -2;
 }
 .hero {
@@ -53,20 +50,19 @@ body {
 .main-title {
 	font-size: calc(var(--index) * 3.3);
 	position: absolute;
-	width:calc(var(--index) * 33);
+	width: calc(var(--index) * 33);
 	bottom: 12vh;
 	line-height: 0.9;
 }
 .gallery {
+	padding-top: calc(var(--gallery-gap) * 1.75);
+	padding-bottom: calc(var(--gallery-gap) * 0.75);
 	display: flex;
-	/* padding: calc(var(--index) * 8) 0; */
-	margin-top: calc(var(--gallery-gap) * 1.75);
-}
-.gallery > * {
-	flex: 1;
-	display: flex;
-	align-items: center;
 	flex-direction: column;
+}
+.gallery__wrap{
+	display: flex;
+	justify-content: space-around;
 }
 .gallery__item {
 	width: calc(var(--index) * 21);
@@ -74,16 +70,8 @@ body {
 	border-radius: 8px;
 	object-fit: cover;
 }
-.gallery__right .text-block {
+.gallery__wrap .text-block {
 	margin: 0;
-	/* margin-top: var(--gallery-gap); */
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-}
-.gallery__left .text-block {
-	margin: 0;
-	/* margin-top: var(--gallery-gap); */
 	display: flex;
 	justify-content: center;
 	flex-direction: column;

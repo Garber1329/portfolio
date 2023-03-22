@@ -19,9 +19,7 @@ if (ScrollTrigger.isTouch !== 1) {
 		}
 	})
 
-	let itemsL = gsap.utils.toArray('.gallery__left .gallery__item')
-
-	itemsL.forEach(item => {
+	gsap.utils.toArray('.gallery__wrap .gallery__item:first-child').forEach(item => {
 		gsap.fromTo(item, { opacity: 0, x: -80 }, {
 			opacity: 1, x: 0,
 			scrollTrigger: {
@@ -33,10 +31,20 @@ if (ScrollTrigger.isTouch !== 1) {
 		})
 	})
 
-	let itemsL_p = gsap.utils.toArray('.gallery__left .gallery__item .text-block__p')
+	gsap.utils.toArray('.gallery__wrap .gallery__item:last-child').forEach(item => {
+		gsap.fromTo(item, { opacity: 0, x: 80 }, {
+			opacity: 1, x: 0,
+			scrollTrigger: {
+				trigger: item,
+				start: '-700',
+				end: '-200',
+				scrub: true
+			}
+		})
+	})
 
-	itemsL_p.forEach(item => {
-		gsap.fromTo(item, { opacity: 0, x: -80 }, {
+	gsap.utils.toArray('.gallery__wrap:nth-child(odd) .text-block .text-block__p').forEach(item => {
+		gsap.fromTo(item, { opacity: 0, x: 100 }, {
 			opacity: 1, x: 0,
 			scrollTrigger: {
 				trigger: item,
@@ -47,24 +55,9 @@ if (ScrollTrigger.isTouch !== 1) {
 		})
 	})
 
-	let itemsR = gsap.utils.toArray('.gallery__right .gallery__item')
-
-	itemsR.forEach(item => {
-		gsap.fromTo(item, { opacity: 0, x: 80 }, {
-			opacity: 1, x: 0,
-			scrollTrigger: {
-				trigger: item,
-				start: '-700',
-				end: '-200',
-				scrub: true
-			}
-		})
-	})
-
-	let itemsR_p = gsap.utils.toArray('.gallery__right .gallery__item .text-block__p')
-
-	itemsR_p.forEach(item => {
-		gsap.fromTo(item, { opacity: 0, x: 80 }, {
+	gsap.utils.toArray('.gallery__wrap:nth-child(even) .text-block .text-block__p').forEach(item => {
+		console.log(item)
+		gsap.fromTo(item, { opacity: 0, x: -100 }, {
 			opacity: 1, x: 0,
 			scrollTrigger: {
 				trigger: item,
