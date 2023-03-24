@@ -20,6 +20,9 @@
 h1, h2, h3, h4, h5, h6 {
 	font-family: outfit-c;
 }
+ul li{
+	list-style-type: none;
+}
 /* will-change */
 .content, .hero, .main-header, .gallery > * {
 	will-change: transform;
@@ -54,9 +57,45 @@ body {
 	bottom: 12vh;
 	line-height: 0.9;
 }
+.about {
+	height: 100vh;
+}
+.about-wrapper {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 100vh;
+}
+.about-me__wrap,
+.my-skills__wrap {
+	width: calc(var(--index) * 22);
+	height: calc(var(--index) * 20);;
+	align-self: center;
+}
+.my-skills__list{
+	display: flex;
+	flex-wrap: wrap;
+}
+.my-skills__icon {
+	filter: grayscale(100%);
+	transition: filter .3s ease;
+	width: 128px;
+	height: 128px;
+}
+.my-skills__icon:hover {
+	filter: grayscale(0%);
+	transition: filter .3s ease;
+}
+.about__text .text-block__h {
+	font-size: 1.5rem;
+}
+.about__text .text-block__p{
+	font-size: 1.2rem;
+}
+.text-block__p{
+	margin-bottom: calc(calc(var(--index) * 0.5));
+}
 .gallery {
-	padding-top: calc(var(--gallery-gap) * 1.75);
-	padding-bottom: calc(var(--gallery-gap) * 0.75);
 	display: flex;
 	flex-direction: column;
 }
