@@ -32,6 +32,7 @@ body {
 	color: #fafafa;
 	font-family: raleway-c;
 	overflow-x: hidden;
+	height: auto;
 }
 .hero-section{
 	background-image: linear-gradient(to bottom, rgb(100, 110, 232) 0%, rgb(8, 11, 51) 100%);
@@ -41,7 +42,8 @@ body {
 	width: calc(var(--index) * 36);
 	position: absolute;
 	left: 37vw;
-	top: 22vh;
+	/* top: 22vh; */
+	top: 7vh;
 	z-index: 0;
 }
 .main-header {
@@ -100,8 +102,10 @@ body {
 	flex-direction: column;
 }
 .gallery__wrap{
+	height: 100vh;
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 }
 .gallery__item {
 	width: calc(var(--index) * 21);

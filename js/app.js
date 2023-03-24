@@ -1,13 +1,13 @@
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin)
 
 if (ScrollTrigger.isTouch !== 1) {
 
-	ScrollSmoother.create({
-		wrapper: '.wrapper',
-		content: '.content',
-		smooth: 1.5,
-		effects: true
-	})
+	// ScrollSmoother.create({
+	// 	wrapper: '.wrapper',
+	// 	content: '.content',
+	// 	smooth: 1.5,
+	// 	effects: true
+	// })
 
 	gsap.fromTo('.hero-section', { opacity: 1 }, {
 		opacity: 0,
@@ -69,3 +69,50 @@ if (ScrollTrigger.isTouch !== 1) {
 	})
 
 }
+
+const sections = document.querySelectorAll(".panel");
+
+const scrolling = {
+    enabled: true,
+    events: "scroll,wheel,touchmove,pointermove".split(","),
+    prevent: e => e.preventDefault(),
+    disable() {
+      if (scrolling.enabled) {
+        scrolling.enabled = false;
+        window.addEventListener("scroll", gsap.ticker.tick, {passive: true});
+        scrolling.events.forEach((e, i) => (i ? document : window).addEventListener(e, scrolling.prevent, {passive: false}));
+      }
+    },
+    enable() {
+      if (!scrolling.enabled) {
+        scrolling.enabled = true;
+        window.removeEventListener("scroll", gsap.ticker.tick);
+        scrolling.events.forEach((e, i) => (i ? document : window).removeEventListener(e, scrolling.prevent));
+      }
+    }
+  };
+
+
+function goToSection(section, anim, i) {
+  if (scrolling.enabled) { 
+    scrolling.disable();
+    gsap.to(window, {
+      scrollTo: {y: section, autoKill: false},
+      onComplete: scrolling.enable,
+      duration: 1.2
+    });
+
+    anim && anim.restart();
+  }
+}
+
+sections.forEach((section, i) => {
+  ScrollTrigger.create({
+    trigger: section,
+	start: "top bottom-=1",
+    end: "bottom top+=1",
+    onEnter: () => goToSection(section),
+    onEnterBack: () => goToSection(section)
+  });
+ 
+});
